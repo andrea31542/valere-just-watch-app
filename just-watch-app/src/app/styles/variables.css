@@ -1,0 +1,38 @@
+/* styles/variables.css */
+
+:root {
+  --grid-width-sm: 576px; /* Replace with $screen-sm value */
+  --grid-width-md: 768px; /* Replace with $screen-md value */
+  --grid-width-lg: 992px; /* Replace with $screen-lg value */
+  --grid-width-xl: 1400px;
+  --grid-column-padding: 10px;
+  --text-color: #d3d3d3; /* Replace with $jw-color-lightgray value */
+  --font-family: 'Lato', 'Lato-fallback', Arial, sans-serif;
+  --background-color: #060d17;
+  --color-primary: #fbc500;
+  --color-primary-rgb: 251, 197, 0;
+  --color-primary-contrast: #000;
+  --color-primary-contrast-rgb: 0, 0, 0;
+  --color-primary-shade: #ddad00;
+  --color-primary-tint: #fbcb1a;
+  --color-secondary: #4c5a67;
+  --color-secondary-rgb: 76, 90, 103;
+  --color-secondary-contrast: #fff;
+  --color-secondary-contrast-rgb: 255, 255, 255;
+  --color-secondary-shade: #434f5b;
+  --color-secondary-tint: #5e6b76;
+  --color-tertiary: #1c252f;
+  --color-tertiary-rgb: 28, 37, 47;
+  --color-tertiary-contrast: #fff;
+  --color-tertiary-contrast-rgb: 255, 255, 255;
+  --color-tertiary-shade: #10161d;
+  --color-tertiary-tint: #333b44;
+  --color-light: #d9e8ed;
+  --color-light-rgb: 217, 232, 237;
+  --color-light-contrast: #000;
+  --color-light-contrast-rgb: 0, 0, 0;
+  --color-light-shade: #b9bdcc;
+  --color-light-tint: #ddeaef;
+  --color-nav-link: #999c9f;
+  --color-dark-button-hover: #383d47;
+}
