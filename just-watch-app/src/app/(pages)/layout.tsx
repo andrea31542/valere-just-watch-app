@@ -5,7 +5,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className='relative z-0 '>
       <NavBar />
-      <div className='min-h-screen flex flex-col lg:pt-[3.5rem] md:px-[2rem] xl:px-[4rem]'>
+      <div className='min-h-screen flex flex-col lg:pt-[3.5rem]'>
         {children}
       </div>
     </div>

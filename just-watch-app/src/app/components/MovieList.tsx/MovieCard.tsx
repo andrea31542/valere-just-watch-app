@@ -13,9 +13,16 @@ type MovieCardProps = {
   alt?: string;
   className?: string;
   id: number;
+  showFavIcon?: boolean;
 };
 
-const MovieCard = ({ path = '', alt = '', className, id }: MovieCardProps) => {
+const MovieCard = ({
+  path = '',
+  alt = '',
+  className,
+  id,
+  showFavIcon = true,
+}: MovieCardProps) => {
   const { favourites, setFavourites, removeFavourites, setMovieDetailsId } =
     useStore();
   const router = useRouter();
@@ -37,6 +44,7 @@ const MovieCard = ({ path = '', alt = '', className, id }: MovieCardProps) => {
 
   return (
     <div
+      key={id}
       className={classNames(
         'relative w-[190px] h-[270px] min-w[190px]',
         className
@@ -48,7 +56,7 @@ const MovieCard = ({ path = '', alt = '', className, id }: MovieCardProps) => {
         className={`absolute text-4xl right-2 text-white ${
           isFavourite ? 'text-opacity-90' : 'text-opacity-30'
         } 
-        hover:text-opacity-60`}
+        hover:text-opacity-60 ${!showFavIcon && 'hidden'}`}
       />
       <Image
         onClick={handleMovieClick}

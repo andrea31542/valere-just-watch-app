@@ -10,18 +10,19 @@ import { useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import LanguageMenu from '../LanguageMenu/LanguageMenu';
+import { useStore } from '@/app/store/store';
+import Dropdown from '../Dropdown/Dropdown';
+import MovieCard from '../MovieList.tsx/MovieCard';
+import { FavouriteMovieType } from '@/app/types/types';
 
 const NavBar = () => {
   const pathname = usePathname();
+  const { favourites } = useStore();
   const navLinks: NavLinkProps[] = useMemo(() => {
     return [
       {
         href: '/pocetna',
         label: 'Početna',
-      },
-      {
-        href: '/novo',
-        label: 'Novo',
       },
       {
         href: '/najgledanije',
@@ -34,6 +35,20 @@ const NavBar = () => {
       },
     ];
   }, [pathname]);
+
+  const renderMovieCard = (favourite: FavouriteMovieType, index: number) => (
+    <div className='flex flex-row gap-[1rem]' key={index}>
+      <MovieCard
+        key={index}
+        {...favourite}
+        showFavIcon={false}
+        className='w-[4rem] h-[5rem] object-cover'
+      />
+      <h2 className='text-[var(--color-light-shade)] content-center'>
+        {favourite.alt}
+      </h2>
+    </div>
+  );
 
   return (
     <nav className='h-[7.5rem] w-full max-w-[109.5rem] flex flex-row items-center sticky justify-between z-50 bg-[var(--background-color)] top-0 lg:px-[5.5rem] '>
@@ -53,6 +68,7 @@ const NavBar = () => {
         </div>
         <div className='flex justify-end w-full items-center overflow-visible gap-[0.5rem] px-[1rem]'>
           <NavLinkList links={navLinks} />
+          <Dropdown items={favourites} renderItem={renderMovieCard} />
           <SearchBar
             placeholder='Pretražite filmove ili serije'
             searchaValue={''}
