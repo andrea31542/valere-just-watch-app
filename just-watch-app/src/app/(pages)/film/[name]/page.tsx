@@ -3,27 +3,13 @@ import { useEffect, useState } from 'react';
 import { useStore } from '@/app/store/store';
 import { getMovieDetails } from '@/app/api/api';
 import BannerImage from '@/app/components/BannerImage';
-import Image from 'next/image';
-import {
-  convertMintesToHoursAndMinutes,
-  formatLargeNumber,
-  formatToDecimal,
-} from '@/app/utils';
-import DescriptionContent from '@/app/components/MovieDetails/DescriptionContent';
 import MovieDetailsContent from '@/app/components/MovieDetails/MovieDetailsContent';
 
 const MovieDetails = () => {
   const { movieDetailsId, movieDetails, setMovieDetails, language } =
     useStore();
   const [loading, setLoading] = useState(true);
-  const {
-    title,
-    backdrop_path,
-    original_title,
-    vote_average,
-    vote_count,
-    runtime,
-  } = movieDetails;
+  const { title, backdrop_path, original_title } = movieDetails;
   useEffect(() => {
     (async () => {
       if (movieDetailsId) {

@@ -63,6 +63,7 @@ export const getFilteredPopularMovies = async (
         page: params.page || 1,
         with_genres: params.with_genres,
         without_genres: params.without_genres,
+        'vote_average.gte': params['vote_average.gte'],
       },
     });
     return res.data;

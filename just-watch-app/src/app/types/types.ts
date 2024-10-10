@@ -43,6 +43,7 @@ export type FilterParams = {
   page?: number;
   with_genres?: number[];
   without_genres?: number[];
+  'vote_average.gte'?: number;
 };
 
 export type MovieDetailType = {

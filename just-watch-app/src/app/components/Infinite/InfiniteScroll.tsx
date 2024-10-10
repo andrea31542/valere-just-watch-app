@@ -25,6 +25,7 @@ const InfiniteScroll = () => {
         page: page,
         with_genres: filters.selectedGenres,
         without_genres: filters.withoutGenres,
+        'vote_average.gte': filters.score,
       };
       const data = await getFilteredPopularMovies(params);
       setMovies((prevMovies) => [...prevMovies, ...data.results]);

@@ -6,9 +6,15 @@ type OneValueRangeSliderProps = {
   min: number;
   max: number;
   sign?: ReactNode;
+  onChange?: (value: number) => void;
 };
 
-const OneValueRangeSlider = ({ min, max, sign }: OneValueRangeSliderProps) => {
+const OneValueRangeSlider = ({
+  min,
+  max,
+  sign,
+  onChange,
+}: OneValueRangeSliderProps) => {
   const [value, setValue] = useState(min);
   const rangeInputRef = useRef<HTMLInputElement | null>(null);
   const [tooltipOffset, setTooltipOffset] = useState(0);
@@ -37,6 +43,7 @@ const OneValueRangeSlider = ({ min, max, sign }: OneValueRangeSliderProps) => {
   };
   const handleOnMouseUp = () => {
     setMouseActive(false);
+    onChange?.(value);
   };
 
   return (
