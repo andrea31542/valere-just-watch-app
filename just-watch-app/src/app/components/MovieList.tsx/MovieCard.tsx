@@ -39,7 +39,6 @@ const MovieCard = ({ path, alt = '', className, id }: MovieCardProps) => {
         'relative w-[190px] h-[270px] min-w[190px]',
         className
       )}
-      onClick={handleMovieClick}
     >
       <IconButton
         onClick={handleFavouriteMovie}
@@ -50,7 +49,11 @@ const MovieCard = ({ path, alt = '', className, id }: MovieCardProps) => {
         hover:text-opacity-60`}
       />
       <Image
-        className={classNames(className, 'rounded-[0.25rem] w-full h-[270px]')}
+        onClick={handleMovieClick}
+        className={classNames(
+          className,
+          'rounded-[0.25rem] w-full h-[270px] cursor-pointer'
+        )}
         src={`https://image.tmdb.org/t/p/original/${path}`}
         alt={alt}
         width={190}

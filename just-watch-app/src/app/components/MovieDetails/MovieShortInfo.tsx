@@ -18,8 +18,8 @@ const MovieShortInfo = () => {
   } = movieDetails;
 
   return (
-    <div className='flex  justify-between gap-[2rem]'>
-      <div className='flex flex-col gap-[1rem] flex-grow'>
+    <div className='flex flex-col justify-center items-center md:flex-row md:justify-between  gap-[2rem]'>
+      <div className='flex flex-col gap-[1rem] flex-grow w-full md:w-auto'>
         <ShortCard
           title='Žanrovi'
           content={genres?.map((genre) => genre.name).join(', ')}
