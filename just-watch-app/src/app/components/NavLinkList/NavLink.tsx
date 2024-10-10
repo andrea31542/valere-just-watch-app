@@ -15,11 +15,6 @@ const NavLink = ({ href, label, className }: NavLinkProps) => {
   return (
     <Link
       href={href}
-      // key={item.id}
-      // href={item.href as string}
-      // className={`hover:text-[#d5d5d5] last:hidden sm:last:block ${
-      //   isExpanded && 'hidden sm:block'
-      // } ${pathname === item.href && 'text-[#d5d5d5] font-bold'} `}
       className={classNames(
         className,
         isVisited

@@ -1,15 +1,22 @@
+import classNames from 'classnames';
 import React from 'react';
 
-interface TooltipProps {
+type TooltipProps = {
   value: number;
-  left: string;
-}
+  left: number;
+  show: boolean;
+};
 
-const Tooltip: React.FC<TooltipProps> = ({ value, left }) => {
+const Tooltip = ({ value, left, show }: TooltipProps) => {
   return (
     <div
-      className='absolute p-1 bg-gray-700 text-white rounded'
-      style={{ left, top: '-30px', transform: 'translateX(-50%)' }}
+      className={classNames(
+        'absolute z-10 p-2 bottom-[3.5rem] text-white bg-black rounded',
+        show ? 'block' : 'hidden'
+      )}
+      style={{
+        left: `${left}px`,
+      }}
     >
       {value}
     </div>

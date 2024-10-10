@@ -1,8 +1,8 @@
 import Filter from '@/app/components/Filter/Filter';
 import GenreSelect from '@/app/components/Filter/GenreSelect';
+import ScoreFilter from '@/app/components/Filter/ScoreFilter';
 import ContentHeader from '@/app/components/Page/ContentHeader';
 import Slider from '@/app/components/Slider/Slider';
-import { FilterTypes } from '@/app/types/types';
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
@@ -16,16 +16,15 @@ const InfiniteScrollMovies = dynamic(
 type FilterItemType = {
   label: string;
   content: ReactNode;
-  type: FilterTypes;
 };
 const Najgledanije = () => {
   const filterItems: FilterItemType[] = [
     {
-      type: 'years',
       label: 'Godina izdanja',
       content: <Slider min={1900} max={2024} step={0.1} />,
     },
-    { type: 'genres', label: 'Žanrovi', content: <GenreSelect /> },
+    { label: 'Žanrovi', content: <GenreSelect /> },
+    { label: 'Ocjena', content: <ScoreFilter /> },
   ];
 
   return (

@@ -2,18 +2,16 @@
 
 import icons from '@/app/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ReactNode, useContext, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import IconButton from '../IconButton';
-import { FilterContext, useFilter } from '@/app/context/FilterContext';
 import { FilterTypes } from '@/app/types/types';
 
 type FilterProps = {
-  type: FilterTypes;
   label?: string;
   content: ReactNode;
 };
 
-const Filter = ({ label = 'Godina izdavanja', content, type }: FilterProps) => {
+const Filter = ({ label = 'Godina izdavanja', content }: FilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -42,7 +40,7 @@ const Filter = ({ label = 'Godina izdavanja', content, type }: FilterProps) => {
               RESET
             </span>
           </div>
-          <div className='px-[1rem]'>{content}</div>
+          {content}
         </div>
       )}
     </div>

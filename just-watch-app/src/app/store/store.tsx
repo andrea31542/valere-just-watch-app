@@ -1,13 +1,18 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { Languages } from '../context/LanguageContext';
-import { Genre, MovieCreditsResponse, MovieDetailType } from '../types/types';
+import {
+  FavouriteMovieType,
+  Genre,
+  MovieCreditsResponse,
+  MovieDetailType,
+} from '../types/types';
 import { setItem } from '../api/localStorage';
 
 type StoreType = {
-  favourites: number[];
-  setFavourites: (favouriteId: number) => void;
-  removeFavourites: (favouriteId: number) => void;
+  favourites: FavouriteMovieType[];
+  setFavourites: (favourites: FavouriteMovieType) => void;
+  removeFavourites: (_: number) => void;
   language: Languages;
   setLanguage: (_: Languages) => void;
   allGenres: Genre[];
@@ -24,16 +29,20 @@ export const useStore = create<StoreType>()(
   persist(
     (set) => ({
       favourites: [],
-
-      setFavourites: (favouriteId: number) => {
+      setFavourites: (favourites: FavouriteMovieType) => {
         set((state) => ({
-          favourites: [...state.favourites, favouriteId],
+          favourites: [...state.favourites, favourites],
         }));
       },
       removeFavourites: (favouriteId: number) => {
-        set((state) => ({
-          favourites: state.favourites.filter((id) => id !== favouriteId),
-        }));
+        set((state) => {
+          const updatedFavourites = state.favourites.filter(
+            (favouriteMovie) => favouriteMovie.id !== favouriteId
+          );
+          return {
+            favourites: updatedFavourites,
+          };
+        });
       },
       language: 'hr-HR',
       setLanguage: (language: Languages) => {

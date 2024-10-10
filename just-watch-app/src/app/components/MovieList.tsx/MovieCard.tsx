@@ -15,16 +15,18 @@ type MovieCardProps = {
   id: number;
 };
 
-const MovieCard = ({ path, alt = '', className, id }: MovieCardProps) => {
+const MovieCard = ({ path = '', alt = '', className, id }: MovieCardProps) => {
   const { favourites, setFavourites, removeFavourites, setMovieDetailsId } =
     useStore();
   const router = useRouter();
   const [isFavourite, setIsFavourite] = useState(
-    favourites.some((fId) => fId === id)
+    favourites.some((favouriteMovie) => favouriteMovie.id === id)
   );
 
   const handleFavouriteMovie = () => {
-    isFavourite ? removeFavourites(id) : setFavourites(id);
+    isFavourite
+      ? removeFavourites(id)
+      : setFavourites({ alt: alt, id: id, path: path });
     setIsFavourite(!isFavourite);
   };
 

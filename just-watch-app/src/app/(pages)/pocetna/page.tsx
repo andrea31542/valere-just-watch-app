@@ -15,7 +15,7 @@ const Pocetna = async () => {
   const documentaryMovie = await getNPopularMoviesByGenre([99]);
 
   return (
-    <div className='flex flex-col px-[3.25rem] lg:px-[4.5rem] gap-[3rem]'>
+    <div className='flex flex-col px-[1rem] sm:px-[3rem] lg:px-[4.5rem] gap-[3rem]'>
       <MovieList title='Najnoviji filmovi' movieList={latestMovies.results} />
       <MovieList
         title='Top 3 filma'

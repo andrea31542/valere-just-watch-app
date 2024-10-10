@@ -119,3 +119,9 @@ export type MovieCreditsResponse = {
   cast: CastMember[];
   crew: CrewMember[];
 };
+
+export type FavouriteMovieType = {
+  path: string;
+  alt: string;
+  id: number;
+};

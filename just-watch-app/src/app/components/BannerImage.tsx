@@ -24,8 +24,10 @@ const BannerImage = ({
         height={720}
       />
       <div className='absolute inset-0 bg-gradient-to-r from-black to-transparent flex items-center'>
-        <div className='flex flex-col w-[40%] p-[2rem] gap-[3rem]'>
-          <h1 className='text-5xl font-bold text-white'>{title}</h1>
+        <div className='flex flex-col w-[60%] md:w-[40%] p-[2rem] gap-[3rem]'>
+          <h1 className='text-base md:text-3xl md:text-5xl font-bold text-white'>
+            {title}
+          </h1>
           <h3 className='original-title text-lg text-white'>
             Original Title: {originalTitle}
           </h3>

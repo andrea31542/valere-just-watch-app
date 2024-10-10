@@ -36,7 +36,7 @@ const NavBar = () => {
   }, [pathname]);
 
   return (
-    <nav className='h-[7.5rem] w-full max-w-[109.5rem] flex flex-row items-center sticky justify-between z-50 bg-transparent top-0 lg:px-[5.5rem] '>
+    <nav className='h-[7.5rem] w-full max-w-[109.5rem] flex flex-row items-center sticky justify-between z-50 bg-[var(--background-color)] top-0 lg:px-[5.5rem] '>
       <div className='flex flex-col lg:flex-row items-center flex-grow lg:gap-[0.5rem]'>
         <div className='flex flex-row items-center justify-between  shrink-0 w-auto'>
           <IconButton
