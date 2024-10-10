@@ -22,7 +22,10 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const language = getItem('language');
+    let language = 'hr-HR';
+    if (typeof window !== 'undefined') {
+      language = getItem('language')!;
+    }
     const authorization = getAuthorizationHeader().Authorization;
     if (authorization) {
       config.headers.Authorization = authorization;

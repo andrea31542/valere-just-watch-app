@@ -7,7 +7,7 @@ import MovieList from '@/app/components/MovieList.tsx/MovieList';
 import { MovieResponseType } from '@/app/types/types';
 
 interface PocetnaProps {
-  latestMovies: any[]; // Define MovieType based on your movie data structure
+  latestMovies: any[];
 }
 
 const Pocetna = async () => {
@@ -28,23 +28,5 @@ const Pocetna = async () => {
     </div>
   );
 };
-
-// export async function getServerSideProps() {
-//   try {
-//     const latestMovies = await getTheLatestMovies(); // Fetch the latest movies
-//     return {
-//       props: {
-//         latestMovies, // Pass the fetched data as props to the component
-//       },
-//     };
-//   } catch (error) {
-//     console.error('Error fetching latest movies:', error);
-//     return {
-//       props: {
-//         latestMovies: [], // Pass an empty array or handle errors as needed
-//       },
-//     };
-//   }
-// }
 
 export default Pocetna;
