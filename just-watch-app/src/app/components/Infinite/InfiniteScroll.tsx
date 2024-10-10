@@ -6,6 +6,7 @@ import { useState } from 'react';
 import MovieCard from '../MovieList.tsx/MovieCard';
 import { getFilteredPopularMovies } from '@/app/api/api';
 import { FilterContext } from '@/app/context/FilterContext';
+import { useStore } from '@/app/store/store';
 
 const InfiniteScroll = () => {
   const { filters } = useContext(FilterContext);
@@ -14,6 +15,7 @@ const InfiniteScroll = () => {
   const [hasMore, setHasMore] = useState(true);
   const scrollRef = useRef<IntersectionObserver | null>(null);
   const [isFetching, setIsFetching] = useState(false);
+  const { language } = useStore();
 
   const fetchMovies = useCallback(
     async (page: number) => {
@@ -41,7 +43,7 @@ const InfiniteScroll = () => {
     setMovies([]);
     setPage(1);
     fetchMovies(1);
-  }, [fetchMovies]);
+  }, [fetchMovies, language]);
 
   const lastMovieRef = useCallback(
     (node: HTMLDivElement) => {

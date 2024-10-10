@@ -19,9 +19,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        lato: ['"Lato"', '"Lato-fallback"', 'Arial', 'sans-serif'], // Define here directly
-        // sans: ['Graphik', 'sans-serif'],
-        // serif: ['Merriweather', 'serif'],
+        lato: ['"Lato"', '"Lato-fallback"', 'Arial', 'sans-serif'],
+        anton: ['Anton', 'Anton-Fallback', 'Impact'],
+        sans: ['Graphik', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
       },
       corePlugins: {
         scrollbar: false,

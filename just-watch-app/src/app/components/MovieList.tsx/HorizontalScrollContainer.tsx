@@ -1,6 +1,5 @@
 'use client';
 import { ReactNode, useRef } from 'react';
-import MovieCard from './MovieCard';
 import IconButton from '../IconButton';
 import icons from '@/app/icons';
 

@@ -9,7 +9,6 @@ const LanguageMenu = () => {
   const handleLanguageChange = (lang: Languages) => {
     setLanguage(lang);
     setIsOpen(false);
-    window.location.reload();
   };
 
   return (

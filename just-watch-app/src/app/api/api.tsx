@@ -1,5 +1,7 @@
 import {
   FilterParams,
+  MovieCreditsResponse,
+  MovieDetailType,
   MovieResponseType,
   TopRatedMoviesResponseType,
 } from '../types/types';
@@ -69,12 +71,26 @@ export const getFilteredPopularMovies = async (
   }
 };
 
-export const getMovieDetails = async (movieId: number) => {
+export const getMovieDetails = async (
+  movieId: number
+): Promise<MovieDetailType> => {
   try {
     const res = await api.get(`${endpoints.movieDetails}${movieId}`);
     return res.data;
   } catch (error) {
     console.error('Get movie details error', error);
+    throw error;
+  }
+};
+
+export const getMovieCasting = async (
+  movieId: number
+): Promise<MovieCreditsResponse> => {
+  try {
+    const res = await api.get(`${endpoints.movieDetails}${movieId}/credits`);
+    return res.data;
+  } catch (error) {
+    console.error('Get movie cast list details error', error);
     throw error;
   }
 };
