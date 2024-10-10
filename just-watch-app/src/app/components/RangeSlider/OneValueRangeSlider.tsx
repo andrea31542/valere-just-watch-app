@@ -6,6 +6,7 @@ type OneValueRangeSliderProps = {
   min: number;
   max: number;
   sign?: ReactNode;
+  step?: number;
   onChange?: (value: number) => void;
 };
 
@@ -13,6 +14,7 @@ const OneValueRangeSlider = ({
   min,
   max,
   sign,
+  step,
   onChange,
 }: OneValueRangeSliderProps) => {
   const [value, setValue] = useState(min);
@@ -55,6 +57,7 @@ const OneValueRangeSlider = ({
           type='range'
           min={min}
           max={max}
+          step={step}
           value={value}
           onChange={handleChange}
           onMouseDown={handleOnMouseDown}
