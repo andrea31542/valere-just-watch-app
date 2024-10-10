@@ -9,7 +9,11 @@ const MovieScoreDuration = () => {
   const { runtime, vote_average, vote_count } = movieDetails;
   return (
     <div className='flex gap-[0.5rem]'>
-      <MovieScore vote_average={vote_average} vote_count={vote_count} />
+      <MovieScore
+        className='text-[var(--color-blue-gray)]'
+        vote_average={vote_average}
+        vote_count={vote_count}
+      />
       <div className='flex relative items-center text-[#d5d5d5]'>
         {runtime && convertMintesToHoursAndMinutes(runtime)}
       </div>

@@ -35,8 +35,8 @@ const Najgledanije = () => {
         content='Drago nam je da ste ovdje! Na JustWatchu možete lako doznati gdje gledati svoje omiljene filmove i serije u Hrvatskoj. JustWatch je brz i učinkovit: odaberite omiljenog pružatelja usluga i doznajte što je novo na Netflixu i drugim streaming platformama. Filtrirajte po žanru i godini izdanja kako biste pronašli savršen film za večeras. Potražite određeni film ili seriju i doznajte gdje ih možete legalno gledati.'
       />
       <div className='flex flex-row'>
-        {filterItems.map((filter) => (
-          <Filter {...filter} />
+        {filterItems.map((filter, index) => (
+          <Filter key={index} {...filter} />
         ))}
       </div>
       <InfiniteScrollMovies />

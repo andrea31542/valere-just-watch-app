@@ -3,6 +3,7 @@ import { useFilter } from '@/app/context/FilterContext';
 import IconButton from '../IconButton';
 import icons from '@/app/icons';
 import useGetGenres from '@/app/hooks/useGetGenres';
+import { Genre } from '@/app/types/types';
 
 const GenreSelect = () => {
   const { filters, updateFilter } = useFilter();
@@ -39,7 +40,7 @@ const GenreSelect = () => {
   return (
     <div>
       <ul className='list-none grid grid-cols-2 gap-1'>
-        {allGenres.map((genre) => (
+        {allGenres.map((genre: Genre) => (
           <li
             key={genre.id}
             onClick={() => handleGenreState(genre.id)}
@@ -64,7 +65,6 @@ const GenreSelect = () => {
               />
             )}
             {genre.name}
-            {/* <span>{movieStates[movie.id]}</span> */}
           </li>
         ))}
       </ul>

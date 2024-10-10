@@ -18,7 +18,6 @@ const NavBar = () => {
       {
         href: '/pocetna',
         label: 'Početna',
-        className: `${pathname === '/' && 'hidden'} `,
       },
       {
         href: '/novo',
@@ -29,8 +28,8 @@ const NavBar = () => {
         label: 'Najgledanije',
       },
       {
-        href: '/liste',
-        label: 'Liste',
+        href: '/omiljeni',
+        label: 'Omiljeni',
         className: `${pathname === '/' && 'hidden'} `,
       },
     ];

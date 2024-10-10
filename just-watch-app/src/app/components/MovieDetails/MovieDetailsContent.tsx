@@ -24,13 +24,13 @@ const MovieDetailsContent = () => {
 
   const castList = useMemo(() => {
     return casting?.cast.map((person) => (
-      <ActorCard name={person.name} role={person.character} />
+      <ActorCard key={person.id} name={person.name} role={person.character} />
     ));
   }, [casting]);
 
   const crewList = useMemo(() => {
     return casting?.crew.map((person) => (
-      <ActorCard name={person.name} role={person.job} />
+      <ActorCard key={person.id} name={person.name} role={person.job} />
     ));
   }, [casting]);
 

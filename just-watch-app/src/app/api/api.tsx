@@ -1,5 +1,6 @@
 import {
   FilterParams,
+  Genre,
   MovieCreditsResponse,
   MovieDetailType,
   MovieResponseType,
@@ -8,10 +9,10 @@ import {
 import { endpoints } from './endpoints';
 import api from './instance';
 
-export const getAllGenres = async () => {
+export const getAllGenres = async (): Promise<Genre[]> => {
   try {
     const res = await api.get(endpoints.genres);
-    return res.data;
+    return res.data.genres;
   } catch (error) {
     console.error('Get all genres', error);
     throw error;
