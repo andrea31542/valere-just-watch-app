@@ -6,7 +6,7 @@ import IconButton from '../IconButton';
 import NavLinkList from '../NavLinkList/NavLinkList';
 import SearchBar from '../SearchBar/SearchBar';
 import { NavLinkProps } from '../NavLinkList/NavLink';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import LanguageMenu from '../LanguageMenu/LanguageMenu';
@@ -18,6 +18,7 @@ import { FavouriteMovieType } from '@/app/types/types';
 const NavBar = () => {
   const pathname = usePathname();
   const { favourites } = useStore();
+  const [openFav, setOpenFav] = useState(false);
   const navLinks: NavLinkProps[] = useMemo(() => {
     return [
       {
@@ -34,6 +35,16 @@ const NavBar = () => {
         className: `${pathname === '/' && 'hidden'} `,
       },
     ];
+  }, [pathname]);
+
+  const handleOpenFav = () => {
+    setOpenFav(!openFav);
+  };
+
+  useEffect(() => {
+    if (pathname.includes('film/')) {
+      setOpenFav(false);
+    }
   }, [pathname]);
 
   const renderMovieCard = (favourite: FavouriteMovieType, index: number) => (
@@ -73,6 +84,8 @@ const NavBar = () => {
             renderItem={renderMovieCard}
             initialLoadedItems={4}
             loadMoreItems={2}
+            handleOpen={handleOpenFav}
+            isOpen={openFav}
           />
           <SearchBar placeholder='Pretražite filmove ili serije' />
           <LogInButton />

@@ -3,12 +3,16 @@ import icons from '@/app/icons';
 import IconButton from '../IconButton';
 import { ReactNode, useCallback, useRef, useState } from 'react';
 import LoadingSpinner from '../LoadingSpinner';
+import classNames from 'classnames';
 
 type DropdownProps<ItemType> = {
   items: ItemType[];
   renderItem: (item: ItemType, index: number) => ReactNode;
   initialLoadedItems: number;
   loadMoreItems: number;
+  handleOpen: () => void;
+  isOpen: boolean;
+  className?: string;
 };
 
 const Dropdown = <ItemType,>({
@@ -16,14 +20,12 @@ const Dropdown = <ItemType,>({
   renderItem,
   initialLoadedItems,
   loadMoreItems,
+  handleOpen,
+  isOpen,
+  className,
 }: DropdownProps<ItemType>) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [visibleItems, setVisibleItems] = useState(initialLoadedItems);
   const dropdownRef = useRef<IntersectionObserver | null>(null);
-
-  const handleOnClick = () => {
-    setIsOpen(!isOpen);
-  };
 
   const lastItemRed = useCallback(
     (node: HTMLDivElement) => {
@@ -47,11 +49,11 @@ const Dropdown = <ItemType,>({
   );
 
   return (
-    <div className='relative inline-block'>
+    <div className={classNames('relative inline-block', className)}>
       <IconButton
         icon={icons.favourite}
         className='cursor-pointer text-[var(--color-light)]'
-        onClick={handleOnClick}
+        onClick={handleOpen}
       />
       {isOpen && (
         <div className='absolute flex flex-col z-10 bg-[var(--background-color)] shadow-lg rounded p-[1rem] rounded max-h-[700px] w-[30rem] overflow-y-auto gap-[1rem]'>
