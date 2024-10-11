@@ -5,9 +5,8 @@ import { useStore } from '@/app/store/store';
 import MovieShortInfo from './MovieShortInfo';
 import ActorCard from '../CastCard/ActorCard';
 import HorizontalContainer from '../MovieList.tsx/HorizontalScrollContainer';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { getMovieCasting } from '@/app/api/api';
-import { MovieCreditsResponse } from '@/app/types/types';
 
 const MovieDetailsContent = () => {
   const { movieDetails, movieDetailsId, casting, setCasting } = useStore();
@@ -23,15 +22,19 @@ const MovieDetailsContent = () => {
   }, [movieDetailsId]);
 
   const castList = useMemo(() => {
-    return casting?.cast.map((person) => (
-      <ActorCard key={person.id} name={person.name} role={person.character} />
-    ));
+    return (
+      casting?.cast.map((person) => (
+        <ActorCard key={person.id} name={person.name} role={person.character} />
+      )) ?? []
+    );
   }, [casting]);
 
   const crewList = useMemo(() => {
-    return casting?.crew.map((person) => (
-      <ActorCard key={person.id} name={person.name} role={person.job} />
-    ));
+    return (
+      casting?.crew.map((person) => (
+        <ActorCard key={person.id} name={person.name} role={person.job} />
+      )) ?? []
+    );
   }, [casting]);
 
   return (
@@ -44,11 +47,11 @@ const MovieDetailsContent = () => {
       <h3 className='uppercase text-xl text-[var(--color-gray-text)] font-bold'>
         cast
       </h3>
-      <HorizontalContainer children={castList} />
+      <HorizontalContainer>{castList}</HorizontalContainer>
       <h3 className='uppercase text-xl text-[var(--color-gray-text)] font-bold'>
         crew
       </h3>
-      <HorizontalContainer children={crewList} />
+      <HorizontalContainer>{crewList}</HorizontalContainer>
     </div>
   );
 };

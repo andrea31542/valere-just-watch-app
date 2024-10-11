@@ -4,7 +4,6 @@ import icons from '@/app/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ReactNode, useState } from 'react';
 import IconButton from '../IconButton';
-import { FilterTypes } from '@/app/types/types';
 
 type FilterProps = {
   label?: string;

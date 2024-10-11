@@ -3,7 +3,6 @@ import GenreSelect from '@/app/components/Filter/GenreSelect';
 import ScoreFilter from '@/app/components/Filter/ScoreFilter';
 import ContentHeader from '@/app/components/Page/ContentHeader';
 import TwoValueRangeSlider from '@/app/components/RangeSlider/TwoValueRangeSlider';
-import Slider from '@/app/components/Slider/Slider';
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 

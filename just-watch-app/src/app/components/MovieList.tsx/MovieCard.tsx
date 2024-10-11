@@ -31,9 +31,9 @@ const MovieCard = ({
   );
 
   const handleFavouriteMovie = () => {
-    isFavourite
-      ? removeFavourites(id)
-      : setFavourites({ alt: alt, id: id, path: path });
+    if (isFavourite) {
+      removeFavourites(id);
+    } else setFavourites({ alt: alt, id: id, path: path });
     setIsFavourite(!isFavourite);
   };
 

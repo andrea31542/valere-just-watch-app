@@ -1,6 +1,5 @@
 'use client';
 import { createContext, ReactNode, useContext, useState } from 'react';
-import { FilterTypes } from '../types/types';
 
 type FilterStateType = {
   minYear: number;
@@ -26,8 +25,6 @@ interface FilterContextType {
     name: FilterType,
     value: UpdateFilterValue<FilterType>
   ) => void;
-  // openedFilter: FilterTypes | undefined;
-  // openFilter: (filterType: FilterTypes | undefined) => void;
 }
 
 export const FilterContext = createContext<FilterContextType>({
@@ -38,28 +35,19 @@ export const FilterContext = createContext<FilterContextType>({
     withoutGenres: [],
     score: 0,
   },
-  updateFilter: function <FilterType extends keyof FilterStateType>(
-    name: FilterType,
-    value: UpdateFilterValue<FilterType>
-  ): void {},
-  // openedFilter: undefined,
-  // openFilter: function (filterType: FilterTypes | undefined): void {},
+  updateFilter: () => {},
 });
 
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
   const [filters, setFilters] = useState<FilterStateType>(initialFilterState);
-  const [openedFilter, setOpenedFilter] = useState<FilterTypes | undefined>(
-    undefined
-  );
+
   const updateFilter = <FilterType extends keyof FilterStateType>(
     name: FilterType,
     value: UpdateFilterValue<FilterType>
   ) => {
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
-  const openFilter = (openedFilterName: FilterTypes | undefined) => {
-    setOpenedFilter(openedFilterName);
-  };
+
   return (
     <FilterContext.Provider value={{ filters, updateFilter }}>
       {children}

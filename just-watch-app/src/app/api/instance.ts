@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getItem } from './localStorage';
 
 const baseApiPath = `${process.env.NEXT_PUBLIC_BE_SERVICE_URL}`;
 

@@ -1,6 +1,5 @@
 'use client';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { setItem } from '../api/localStorage';
 
 export type Languages = 'en-EN' | 'hr-HR' | 'es-ES';
 

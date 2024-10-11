@@ -68,7 +68,12 @@ const NavBar = () => {
         </div>
         <div className='flex justify-end w-full items-center overflow-visible gap-[0.5rem] px-[1rem]'>
           <NavLinkList links={navLinks} />
-          <Dropdown items={favourites} renderItem={renderMovieCard} />
+          <Dropdown
+            items={favourites}
+            renderItem={renderMovieCard}
+            initialLoadedItems={4}
+            loadMoreItems={2}
+          />
           <SearchBar placeholder='Pretražite filmove ili serije' />
           <LogInButton />
           <LanguageMenu />
