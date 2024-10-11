@@ -77,18 +77,22 @@ const NavBar = () => {
             icon={icons.userSettings}
           />
         </div>
-        <div className='flex justify-end w-full items-center overflow-visible gap-[0.5rem] px-[1rem]'>
-          <NavLinkList links={navLinks} />
-          <Dropdown
-            items={favourites}
-            renderItem={renderMovieCard}
-            initialLoadedItems={4}
-            loadMoreItems={2}
-            handleOpen={handleOpenFav}
-            isOpen={openFav}
-            className={'invisible md:visible'}
-          />
-          <SearchBar placeholder='Pretražite filmove ili serije' />
+        <div className='flex flex-col sm:flex-row justify-end w-full items-center overflow-visible sm:gap-[0.5rem] px-[1rem] '>
+          <div className='flex justify-end items-center '>
+            <NavLinkList links={navLinks} />
+            <Dropdown
+              items={favourites}
+              renderItem={renderMovieCard}
+              initialLoadedItems={4}
+              loadMoreItems={2}
+              handleOpen={handleOpenFav}
+              isOpen={openFav}
+              className={'invisible md:visible'}
+            />
+          </div>
+          <div className='w-full'>
+            <SearchBar placeholder='Pretražite filmove ili serije' />
+          </div>
           <LogInButton />
           <LanguageMenu />
         </div>

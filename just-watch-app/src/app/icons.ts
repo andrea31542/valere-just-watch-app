@@ -11,6 +11,7 @@ import {
   faChevronDown,
   faCheck,
   faMinusCircle,
+  faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
@@ -27,6 +28,7 @@ export const icons = {
   chevronDown: faChevronDown,
   checkmark: faCheck,
   minusCircle: faMinusCircle,
+  right: faArrowRight,
 } satisfies Record<string, IconDefinition>;
 
 export default icons;

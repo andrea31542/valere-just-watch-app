@@ -12,7 +12,7 @@ const LanguageMenu = () => {
   };
 
   return (
-    <div className='relative inline-block text-left'>
+    <div className='hidden sm:block relative inline-block text-left'>
       <div>
         <button
           type='button'

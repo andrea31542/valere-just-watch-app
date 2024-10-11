@@ -6,6 +6,8 @@ import debounce from 'lodash/debounce';
 import { getSearchData } from '@/app/api/api';
 import { SearchResponseType } from '@/app/types/types';
 import SearchSuggester from './SearchSuggester';
+import IconButton from '../IconButton';
+import Link from 'next/link';
 
 type SearchBarType = {
   placeholder: string;
@@ -60,7 +62,14 @@ const SearchBar = ({ placeholder = '' }: SearchBarType) => {
       </div>
       {value && searchData?.results.length && (
         <div className='absolute left-0 top-full w-full z-20'>
-          <SearchSuggester items={searchData.results} />
+          <SearchSuggester items={searchData.results} query={value} />
+          <Link
+            href={{ pathname: '/search', query: { q: value } }}
+            className='w-full text-[#78a6b8] bg-[var(--color-tertiary-shade)]  text-base font-bold hover:text-[#d9e8ed] p-4 flex items-center justify-center border-t-[0.3px] border-[#1c252f]'
+          >
+            Pogledajte sve rezultate za {value}
+            <IconButton icon={icons.right} />
+          </Link>
         </div>
       )}
     </div>

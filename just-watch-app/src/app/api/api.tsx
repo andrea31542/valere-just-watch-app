@@ -101,11 +101,12 @@ export const getMovieCasting = async (
 };
 
 export const getSearchData = async (
-  query: string
+  query: string,
+  page: number = 1
 ): Promise<SearchResponseType> => {
   try {
     const res = await api.get(endpoints.search, {
-      params: { query: query },
+      params: { query: query, page: page },
     });
     return res.data;
   } catch (error) {

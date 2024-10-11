@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 
 type ImageType = 'circle' | 'square';
@@ -8,6 +9,7 @@ export type SearchItemCardProps = {
   title: string;
   subtitle: string;
   onClick?: () => void;
+  isFocused?: boolean;
 };
 
 const SearchItemCard = ({
@@ -16,6 +18,7 @@ const SearchItemCard = ({
   title,
   subtitle,
   onClick,
+  isFocused,
 }: SearchItemCardProps) => {
   const imageSize = {
     circle: { height: 50, width: 50 },
@@ -27,7 +30,10 @@ const SearchItemCard = ({
 
   return (
     <div
-      className='flex items-center cursor-pointer gap-[1rem] w-full hover:bg-[var(--color-secondary)] p-[0.5rem] rounded-[0.25rem]'
+      className={classNames(
+        'flex items-center cursor-pointer gap-[1rem] w-full hover:bg-[var(--color-secondary)] p-[0.5rem] rounded-[0.25rem]',
+        isFocused && 'bg-[var(--color-secondary)]'
+      )}
       onClick={onClick}
     >
       <span>
