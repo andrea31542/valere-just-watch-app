@@ -4,6 +4,7 @@ import {
   MovieCreditsResponse,
   MovieDetailType,
   MovieResponseType,
+  SearchResponseType,
   TopRatedMoviesResponseType,
 } from '../types/types';
 import { endpoints } from './endpoints';
@@ -99,4 +100,16 @@ export const getMovieCasting = async (
   }
 };
 
-export const getSearchData = async () => {};
+export const getSearchData = async (
+  query: string
+): Promise<SearchResponseType> => {
+  try {
+    const res = await api.get(endpoints.search, {
+      params: { query: query },
+    });
+    return res.data;
+  } catch (error) {
+    console.error('Get search error', error);
+    throw error;
+  }
+};

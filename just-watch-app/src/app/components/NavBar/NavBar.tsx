@@ -64,7 +64,7 @@ const NavBar = () => {
   return (
     <nav className='h-[7.5rem] w-full flex flex-row items-center sticky justify-between z-50 bg-[var(--background-color)] top-0 lg:px-[5.5rem] '>
       <div className='flex flex-col lg:flex-row items-center flex-grow lg:gap-[0.5rem]'>
-        <div className='flex flex-row items-center justify-between  shrink-0 w-auto'>
+        <div className='flex flex-row items-center justify-between shrink-0 w-auto'>
           <IconButton
             className='text-[white] h-[3.5rem] lg:invisible'
             icon={icons.menu}
@@ -86,6 +86,7 @@ const NavBar = () => {
             loadMoreItems={2}
             handleOpen={handleOpenFav}
             isOpen={openFav}
+            className={'invisible md:visible'}
           />
           <SearchBar placeholder='Pretražite filmove ili serije' />
           <LogInButton />

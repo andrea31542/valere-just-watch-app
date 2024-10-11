@@ -27,7 +27,7 @@ const Dropdown = <ItemType,>({
   const [visibleItems, setVisibleItems] = useState(initialLoadedItems);
   const dropdownRef = useRef<IntersectionObserver | null>(null);
 
-  const lastItemRed = useCallback(
+  const lastItemRef = useCallback(
     (node: HTMLDivElement) => {
       if (dropdownRef.current) {
         dropdownRef.current.disconnect();
@@ -56,10 +56,10 @@ const Dropdown = <ItemType,>({
         onClick={handleOpen}
       />
       {isOpen && (
-        <div className='absolute flex flex-col z-10 bg-[var(--background-color)] shadow-lg rounded p-[1rem] rounded max-h-[700px] w-[30rem] overflow-y-auto gap-[1rem]'>
+        <div className='absolute  flex flex-col z-10 bg-[var(--background-color)] shadow-lg rounded p-[1rem] rounded max-h-[60vh] w-[30rem] overflow-y-auto gap-[1rem]'>
           {items.slice(0, visibleItems).map((item, index) => (
             <div
-              ref={index === visibleItems - 1 ? lastItemRed : null}
+              ref={index === visibleItems - 1 ? lastItemRef : null}
               key={index}
             >
               {renderItem(item, index)}

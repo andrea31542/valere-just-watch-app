@@ -23,3 +23,8 @@ export const convertMintesToHoursAndMinutes = (totalMinutes: number) => {
 
 export const createNewYearDateString = (year: number) => `${year}-01-01`;
 export const createOldYearDateString = (year: number) => `${year}-12-31`;
+
+export const getYearFromString = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.getFullYear();
+};

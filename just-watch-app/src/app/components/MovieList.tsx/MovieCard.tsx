@@ -7,6 +7,7 @@ import { useStore } from '@/app/store/store';
 import { useState } from 'react';
 import { formatPathMovieTitle } from '@/app/utils';
 import { useRouter } from 'next/navigation';
+import { imageApiRoot } from '@/app/constanst';
 
 type MovieCardProps = {
   path?: string;
@@ -64,7 +65,7 @@ const MovieCard = ({
           className,
           'rounded-[0.25rem] w-full h-[270px] cursor-pointer'
         )}
-        src={`https://image.tmdb.org/t/p/original/${path}`}
+        src={`${imageApiRoot}${path}`}
         alt={alt}
         width={190}
         height={270}

@@ -1,4 +1,5 @@
 export type FilterTypes = 'genres' | 'score' | 'years';
+export type MediaType = 'person' | 'movie' | 'tv';
 
 export type MovieResponseType = {
   dates: {
@@ -128,4 +129,12 @@ export type FavouriteMovieType = {
   path: string;
   alt: string;
   id: number;
+};
+
+export type SeachMovieType = Movie & {
+  media_type: MediaType;
+} & MemberType;
+
+export type SearchResponseType = Omit<TopRatedMoviesResponseType, 'results'> & {
+  results: SeachMovieType[];
 };
