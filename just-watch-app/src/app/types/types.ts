@@ -1,4 +1,5 @@
 export type FilterTypes = 'genres' | 'score' | 'years';
+
 export type MovieResponseType = {
   dates: {
     maximum: string;
@@ -44,6 +45,8 @@ export type FilterParams = {
   with_genres?: number[];
   without_genres?: number[];
   'vote_average.gte'?: number;
+  'release_date.gte'?: string;
+  'release_date.lte'?: string;
 };
 
 export type MovieDetailType = {

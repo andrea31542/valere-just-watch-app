@@ -1,19 +1,29 @@
 'use client';
 import icons from '@/app/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { ChangeEvent, useState } from 'react';
-import '../../styles/variables.css';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import debounce from 'lodash/debounce';
 
 type SearchBarType = {
   placeholder: string;
-  searchaValue?: string;
 };
 
-const SearchBar = ({
-  placeholder = '',
-  searchaValue = 'sda',
-}: SearchBarType) => {
-  const [value, setValue] = useState<string>(searchaValue);
+const SearchBar = ({ placeholder = '' }: SearchBarType) => {
+  const [value, setValue] = useState<string>('');
+
+  const fetchData = useCallback(
+    debounce(async (value) => {
+      console.log('call api call with ', value);
+    }, 300),
+    []
+  );
+
+  useEffect(() => {
+    if (value) {
+      fetchData(value);
+    }
+    return () => fetchData.cancel();
+  }, [value, fetchData]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);

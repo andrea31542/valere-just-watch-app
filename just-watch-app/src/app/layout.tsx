@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { FilterProvider } from './context/FilterContext';
 import { LanguageProvider } from './context/LanguageContext';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

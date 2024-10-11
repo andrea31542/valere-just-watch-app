@@ -4,4 +4,5 @@ export const endpoints = {
   genres: 'genre/movie/list?language=en',
   movieByGenre: '/discover/movie?page=1&sort_by=popularity.desc',
   movieDetails: '/movie/',
+  search: 'search/multi',
 };

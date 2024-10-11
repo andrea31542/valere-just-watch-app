@@ -20,3 +20,6 @@ export const convertMintesToHoursAndMinutes = (totalMinutes: number) => {
   const minutes = totalMinutes % 60;
   return `${hours}h ${minutes}m`;
 };
+
+export const createNewYearDateString = (year: number) => `${year}-01-01`;
+export const createOldYearDateString = (year: number) => `${year}-12-31`;

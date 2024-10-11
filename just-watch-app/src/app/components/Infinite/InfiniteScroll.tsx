@@ -7,6 +7,7 @@ import MovieCard from '../MovieList.tsx/MovieCard';
 import { getFilteredPopularMovies } from '@/app/api/api';
 import { FilterContext } from '@/app/context/FilterContext';
 import { useStore } from '@/app/store/store';
+import { createNewYearDateString } from '@/app/utils';
 
 const InfiniteScroll = () => {
   const { filters } = useContext(FilterContext);
@@ -26,6 +27,8 @@ const InfiniteScroll = () => {
         with_genres: filters.selectedGenres,
         without_genres: filters.withoutGenres,
         'vote_average.gte': filters.score,
+        'release_date.gte': createNewYearDateString(filters.minYear),
+        'release_date.lte': createNewYearDateString(filters.maxYear),
       };
       const data = await getFilteredPopularMovies(params);
       setMovies((prevMovies) => [...prevMovies, ...data.results]);

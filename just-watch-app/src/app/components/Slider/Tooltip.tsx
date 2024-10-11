@@ -8,10 +8,11 @@ type TooltipProps = {
 };
 
 const Tooltip = ({ value, left, show }: TooltipProps) => {
+  if (!show) return null;
   return (
     <div
       className={classNames(
-        'absolute z-10 p-2 bottom-[3.5rem] text-white bg-black rounded',
+        'absolute z-20 p-2 bottom-[1rem] text-white bg-black rounded',
         show ? 'block' : 'hidden'
       )}
       style={{

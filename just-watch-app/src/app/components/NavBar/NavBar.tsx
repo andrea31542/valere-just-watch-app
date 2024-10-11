@@ -4,7 +4,7 @@ import LogInButton from './LogInButtons';
 import NavBarLogo from './NavBarLogo';
 import IconButton from '../IconButton';
 import NavLinkList from '../NavLinkList/NavLinkList';
-import SearchBar from './SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import { NavLinkProps } from '../NavLinkList/NavLink';
 import { useMemo } from 'react';
 import { usePathname } from 'next/navigation';
@@ -69,10 +69,7 @@ const NavBar = () => {
         <div className='flex justify-end w-full items-center overflow-visible gap-[0.5rem] px-[1rem]'>
           <NavLinkList links={navLinks} />
           <Dropdown items={favourites} renderItem={renderMovieCard} />
-          <SearchBar
-            placeholder='Pretražite filmove ili serije'
-            searchaValue={''}
-          />
+          <SearchBar placeholder='Pretražite filmove ili serije' />
           <LogInButton />
           <LanguageMenu />
         </div>

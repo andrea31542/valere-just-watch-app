@@ -64,6 +64,8 @@ export const getFilteredPopularMovies = async (
         with_genres: params.with_genres,
         without_genres: params.without_genres,
         'vote_average.gte': params['vote_average.gte'],
+        'release_date.gte': params['release_date.gte'],
+        'release_date.lte': params['release_date.lte'],
       },
     });
     return res.data;
@@ -96,3 +98,5 @@ export const getMovieCasting = async (
     throw error;
   }
 };
+
+export const getSearchData = async () => {};

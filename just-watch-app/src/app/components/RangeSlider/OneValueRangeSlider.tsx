@@ -49,10 +49,10 @@ const OneValueRangeSlider = ({
   };
 
   return (
-    <div className='flex flex-row w-full items-center gap-[0.5rem]'>
+    <div className='flex flex-row w-full items-center gap-[0.5rem] '>
       <span>{sign}</span>
       <span className='text-[var(--color-tertiary-contrast)]'>{min}</span>
-      <div className='p-[0.5rem] relative w-full'>
+      <div className='range-input p-[0.5rem] relative w-full '>
         <input
           type='range'
           min={min}
@@ -63,7 +63,7 @@ const OneValueRangeSlider = ({
           onMouseDown={handleOnMouseDown}
           onMouseUp={handleOnMouseUp}
           ref={rangeInputRef}
-          className='w-full h-1'
+          className='w-full h-1 '
         />
         <Tooltip value={value} left={tooltipOffset} show={mouseActive} />
       </div>
