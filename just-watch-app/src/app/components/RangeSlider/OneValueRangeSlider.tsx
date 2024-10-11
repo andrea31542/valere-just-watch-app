@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef, useEffect, ReactNode } from 'react';
-import Tooltip from '../Slider/Tooltip';
+import Tooltip from './Tooltip';
 
 type OneValueRangeSliderProps = {
   min: number;

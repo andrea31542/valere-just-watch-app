@@ -1,6 +1,6 @@
 'use client';
 import { ChangeEvent, ReactNode, useEffect, useRef, useState } from 'react';
-import Tooltip from '../Slider/Tooltip';
+import Tooltip from './Tooltip';
 import { useFilter } from '@/app/context/FilterContext';
 
 type TwoValueRangeSliderProps = {
