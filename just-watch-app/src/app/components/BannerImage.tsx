@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import MovieScoreDuration from './MovieDetails/MovieScoreDuration';
+import { imageApiRoot } from '../constanst';
 
 type BannerImageProps = {
   alt: string | undefined;
@@ -19,7 +20,7 @@ const BannerImage = ({
       <Image
         alt={alt}
         className='object-cover w-full h-full'
-        src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
+        src={`${imageApiRoot}${backdropPath}`}
         width={1920}
         height={720}
       />
