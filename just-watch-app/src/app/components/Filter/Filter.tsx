@@ -4,17 +4,36 @@ import icons from '@/app/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ReactNode, useState } from 'react';
 import IconButton from '../IconButton';
+import { useFilter } from '@/app/context/FilterContext';
+import { FilterTypes } from '@/app/types/types';
 
 type FilterProps = {
   label?: string;
   content: ReactNode;
+  type: FilterTypes;
 };
 
-const Filter = ({ label = 'Godina izdavanja', content }: FilterProps) => {
+const Filter = ({ label = '', content, type }: FilterProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { resetFilter } = useFilter();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleResetFilter = () => {
+    switch (type) {
+      case 'genres': {
+        resetFilter('selectedGenres');
+        resetFilter('withoutGenres');
+      }
+      case 'score':
+        resetFilter('score');
+      case 'years': {
+        resetFilter('maxYear');
+        resetFilter('minYear');
+      }
+    }
   };
 
   return (
@@ -34,7 +53,10 @@ const Filter = ({ label = 'Godina izdavanja', content }: FilterProps) => {
         <div className='absolute flex flex-col overflow-auto z-20 bg-[var(--background-color)] w-[25rem] rounded-[0.5rem] p-[1.5rem] gap-[2rem] mt-[0.5rem] shadow-lg top-full'>
           <div className='flex flex-row items-baseline justify-between'>
             <h2 className='text-md md:text-xl text-[#d5d5d5]'>{label}</h2>
-            <span className='bg-transparent text-[var(--color-secondary)] flex flex-row px-[1.5rem] py-[0.75rem] items-baseline'>
+            <span
+              className='bg-transparent text-[var(--color-secondary)] flex flex-row px-[1.5rem] py-[0.75rem] items-baseline cursor-pointer'
+              onClick={handleResetFilter}
+            >
               <IconButton icon={icons.close} />
               RESET
             </span>

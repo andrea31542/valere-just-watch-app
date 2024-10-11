@@ -3,6 +3,8 @@ import GenreSelect from '@/app/components/Filter/GenreSelect';
 import ScoreFilter from '@/app/components/Filter/ScoreFilter';
 import ContentHeader from '@/app/components/Page/ContentHeader';
 import TwoValueRangeSlider from '@/app/components/RangeSlider/TwoValueRangeSlider';
+import ResetFilterButton from '@/app/components/ResetFilterButton';
+import { FilterTypes } from '@/app/types/types';
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
@@ -16,15 +18,17 @@ const InfiniteScrollMovies = dynamic(
 type FilterItemType = {
   label: string;
   content: ReactNode;
+  type: FilterTypes;
 };
 const Najgledanije = () => {
   const filterItems: FilterItemType[] = [
     {
+      type: 'years',
       label: 'Godina izdanja',
       content: <TwoValueRangeSlider step={1} min={1900} max={2024} />,
     },
-    { label: 'Žanrovi', content: <GenreSelect /> },
-    { label: 'Ocjena', content: <ScoreFilter /> },
+    { type: 'genres', label: 'Žanrovi', content: <GenreSelect /> },
+    { type: 'score', label: 'Ocjena', content: <ScoreFilter /> },
   ];
 
   return (
@@ -37,6 +41,7 @@ const Najgledanije = () => {
         {filterItems.map((filter, index) => (
           <Filter key={index} {...filter} />
         ))}
+        <ResetFilterButton />
       </div>
       <InfiniteScrollMovies />
     </div>

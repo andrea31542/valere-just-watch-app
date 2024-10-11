@@ -50,7 +50,16 @@ const MovieDetailsContent = () => {
       <h1 className='text-4xl font-bold text-white uppercase'>O filmu</h1>
       <DescriptionContent title='Opis' content={overview} />
       <div className='relative bottom-0 left-0 right-0 p-4 text-white'>
-        <MovieShortInfo />
+        <MovieShortInfo
+          poster_path={movieDetails.poster_path}
+          title={movieDetails.title || movieDetails.original_title}
+          id={movieDetails.id!}
+          production_countries={movieDetails.production_countries}
+          runtime={movieDetails.runtime}
+          genres={movieDetails.genres}
+          vote_average={movieDetails.vote_average}
+          vote_count={movieDetails.vote_count}
+        />
       </div>
       <h3 className='uppercase text-xl text-[var(--color-gray-text)] font-bold'>
         cast

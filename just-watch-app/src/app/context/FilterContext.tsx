@@ -25,6 +25,10 @@ interface FilterContextType {
     name: FilterType,
     value: UpdateFilterValue<FilterType>
   ) => void;
+  resetFilter: <FilterType extends keyof FilterStateType>(
+    name: FilterType
+  ) => void;
+  resetAllFilters: () => void;
 }
 
 export const FilterContext = createContext<FilterContextType>({
@@ -36,6 +40,8 @@ export const FilterContext = createContext<FilterContextType>({
     score: 0,
   },
   updateFilter: () => {},
+  resetFilter: () => {},
+  resetAllFilters: () => {},
 });
 
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
@@ -48,8 +54,23 @@ export const FilterProvider = ({ children }: { children: ReactNode }) => {
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
+  const resetFilter = <FilterType extends keyof FilterStateType>(
+    name: FilterType
+  ) => {
+    setFilters((prev) => ({
+      ...prev,
+      [name]: initialFilterState[name],
+    }));
+  };
+
+  const resetAllFilters = () => {
+    setFilters(initialFilterState);
+  };
+
   return (
-    <FilterContext.Provider value={{ filters, updateFilter }}>
+    <FilterContext.Provider
+      value={{ filters, updateFilter, resetFilter, resetAllFilters }}
+    >
       {children}
     </FilterContext.Provider>
   );

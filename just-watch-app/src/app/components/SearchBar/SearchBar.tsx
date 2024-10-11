@@ -36,6 +36,10 @@ const SearchBar = ({ placeholder = '' }: SearchBarType) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
+
+  const handleCloseSearchBar = () => {
+    setValue('');
+  };
   return (
     <div className='relative flex-grow'>
       <div
@@ -56,6 +60,7 @@ const SearchBar = ({ placeholder = '' }: SearchBarType) => {
             <FontAwesomeIcon
               className='flex items-center pr-[1rem]'
               icon={icons.close}
+              onClick={handleCloseSearchBar}
             />
           </button>
         )}

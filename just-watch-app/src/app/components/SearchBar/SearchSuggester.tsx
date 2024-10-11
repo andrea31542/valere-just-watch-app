@@ -58,7 +58,7 @@ const SearchSuggester = ({ items, query }: SearchSuggesterProps) => {
       } else if (event.key === 'Enter') {
         if (focusedMovie === null) {
           console.log(query);
-          router.push(`/search?q=${formatPathMovieTitle(query)}`);
+          router.push(`/search?q=${query}`);
         } else {
           const selectedMovie = focusedMovie && displayedMovies[focusedMovie];
           if (selectedMovie) {

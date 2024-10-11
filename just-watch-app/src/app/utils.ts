@@ -28,3 +28,19 @@ export const getYearFromString = (dateString: string) => {
   const date = new Date(dateString);
   return date.getFullYear();
 };
+
+export const getRandomElements = <T extends { id: number }>(
+  arr: T[],
+  num: number
+): T[] => {
+  const count = Math.min(num, arr.length);
+
+  const indices = new Set<number>();
+
+  while (indices.size < count) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    indices.add(randomIndex);
+  }
+
+  return Array.from(indices).map((index) => arr[index]);
+};
