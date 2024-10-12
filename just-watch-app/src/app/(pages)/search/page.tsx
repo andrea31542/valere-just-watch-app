@@ -15,8 +15,8 @@ const Search = async ({ searchParams }: SearchType) => {
       <h1 className='text-[var(--color-secondary-contrast)] text-3xl mt-[1rem]'>
         Search query: {query}
       </h1>
-      {moviesSearched.map((movieDetails) => (
-        <div className='px-[3rem]'>
+      {moviesSearched.map((movieDetails, index) => (
+        <div className='px-[3rem]' key={`${movieDetails.id} - ${index}`}>
           <MovieShortInfo
             poster_path={movieDetails.poster_path}
             title={movieDetails.title || movieDetails.original_title}
