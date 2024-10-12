@@ -23,7 +23,7 @@ const MovieDetailsContent = () => {
 
   const castList = useMemo(() => {
     return (
-      casting?.cast.map((person, index) => (
+      casting?.cast.map((person) => (
         <ActorCard
           key={`${person.id}-${person.cast_id}`}
           name={person.name}
