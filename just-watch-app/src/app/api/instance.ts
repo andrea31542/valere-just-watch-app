@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { getItem } from './localStorage';
 
 const baseApiPath = `${process.env.NEXT_PUBLIC_BE_SERVICE_URL}`;
-
 const commonHeader = {
   'Content-Type': 'application/json',
 };
@@ -21,20 +21,20 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    // let language = 'hr-HR';
-    // if (typeof window !== 'undefined') {
-    //   language = getItem('language')!;
-    // }
+    let language = 'hr-HR';
+    if (typeof window !== 'undefined') {
+      language = getItem('language') || 'en-EN';
+    }
     const authorization = getAuthorizationHeader().Authorization;
     if (authorization) {
       config.headers.Authorization = authorization;
     }
-    // if (language) {
-    //   config.params = {
-    //     ...config.params,
-    //     language,
-    //   };
-    // }
+    if (language && !config.url?.includes('language')) {
+      config.params = {
+        ...config.params,
+        language,
+      };
+    }
 
     return config;
   },

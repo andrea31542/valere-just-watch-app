@@ -1,13 +1,14 @@
 'use client';
 import { ChangeEvent, ReactNode, useEffect, useRef, useState } from 'react';
 import Tooltip from './Tooltip';
-import { useFilter } from '@/app/context/FilterContext';
 
 type TwoValueRangeSliderProps = {
   min: number;
   max: number;
   sign?: ReactNode;
   step: number;
+  defaultValue: { min: number; max: number };
+  onChange: (type: 'min' | 'max', value: number) => void;
 };
 
 const TwoValueRangeSlider = ({
@@ -15,24 +16,32 @@ const TwoValueRangeSlider = ({
   max,
   step,
   sign,
+  defaultValue,
+  onChange,
 }: TwoValueRangeSliderProps) => {
-  const { updateFilter } = useFilter();
   const progressRef = useRef<HTMLDivElement>(null);
   const rangeMinRef = useRef<HTMLInputElement | null>(null);
   const rangeMaxRef = useRef<HTMLInputElement | null>(null);
-
   const [sliderState, setSliderState] = useState({
-    minValue: min,
-    maxValue: max,
+    minValue: defaultValue.min ?? min,
+    maxValue: defaultValue.max ?? max,
     tooltipMinOffset: 0,
     tooltipMaxOffset: 0,
     mouseActiveMin: false,
     mouseActiveMax: false,
   });
 
+  useEffect(() => {
+    setSliderState((prevState) => ({
+      ...prevState,
+      minValue: defaultValue.min ?? min,
+      maxValue: defaultValue.max ?? max,
+    }));
+  }, [defaultValue]);
+
   const handleMouseUp = () => {
-    updateFilter('maxYear', sliderState.maxValue);
-    updateFilter('minYear', sliderState.minValue);
+    onChange('min', sliderState.minValue);
+    onChange('max', sliderState.maxValue);
     setSliderState((prevState) => ({
       ...prevState,
       mouseActiveMin: false,

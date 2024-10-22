@@ -3,7 +3,7 @@ import OneValueRangeSlider from '../RangeSlider/OneValueRangeSlider';
 import Image from 'next/image';
 import { useFilter } from '@/app/context/FilterContext';
 const ScoreFilter = () => {
-  const { updateFilter } = useFilter();
+  const { updateFilter, filters } = useFilter();
 
   const handleUpdateScoreFilter = (newScore: number) => {
     updateFilter('score', newScore);
@@ -14,6 +14,7 @@ const ScoreFilter = () => {
       min={0}
       max={10}
       step={0.1}
+      defaultValue={filters.score}
       onChange={handleUpdateScoreFilter}
       sign={
         <Image

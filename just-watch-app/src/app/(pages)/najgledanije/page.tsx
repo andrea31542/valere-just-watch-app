@@ -1,8 +1,8 @@
 import Filter from '@/app/components/Filter/Filter';
 import GenreSelect from '@/app/components/Filter/GenreSelect';
 import ScoreFilter from '@/app/components/Filter/ScoreFilter';
+import YearsFilter from '@/app/components/Filter/YearsFilter';
 import ContentHeader from '@/app/components/Page/ContentHeader';
-import TwoValueRangeSlider from '@/app/components/RangeSlider/TwoValueRangeSlider';
 import ResetFilterButton from '@/app/components/ResetFilterButton';
 import { FilterTypes } from '@/app/types/types';
 import dynamic from 'next/dynamic';
@@ -25,7 +25,7 @@ const Najgledanije = () => {
     {
       type: 'years',
       label: 'Godina izdanja',
-      content: <TwoValueRangeSlider step={1} min={1900} max={2024} />,
+      content: <YearsFilter />,
     },
     { type: 'genres', label: 'Žanrovi', content: <GenreSelect /> },
     { type: 'score', label: 'Ocjena', content: <ScoreFilter /> },

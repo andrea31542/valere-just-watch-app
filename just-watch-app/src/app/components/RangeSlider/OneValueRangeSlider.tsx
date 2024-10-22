@@ -8,6 +8,7 @@ type OneValueRangeSliderProps = {
   sign?: ReactNode;
   step?: number;
   onChange?: (value: number) => void;
+  defaultValue?: number;
 };
 
 const OneValueRangeSlider = ({
@@ -15,12 +16,17 @@ const OneValueRangeSlider = ({
   max,
   sign,
   step,
+  defaultValue,
   onChange,
 }: OneValueRangeSliderProps) => {
   const [value, setValue] = useState(min);
   const rangeInputRef = useRef<HTMLInputElement | null>(null);
   const [tooltipOffset, setTooltipOffset] = useState(0);
   const [mouseActive, setMouseActive] = useState(false);
+
+  useEffect(() => {
+    if (defaultValue) setValue(defaultValue);
+  }, [defaultValue]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);

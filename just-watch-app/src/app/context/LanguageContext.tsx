@@ -1,5 +1,6 @@
 'use client';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { getItem } from '../api/localStorage';
 
 export type Languages = 'en-EN' | 'hr-HR' | 'es-ES';
 
@@ -19,7 +20,9 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Languages>('hr-HR');
+  const [language, setLanguage] = useState<Languages>(
+    (getItem('language') as Languages) || 'hr-HR'
+  );
 
   const switchLanguage = (language: Languages) => {
     setLanguage(language);
